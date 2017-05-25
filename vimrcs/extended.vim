@@ -12,7 +12,8 @@
 if has("mac") || has("macunix")
     set gfn=Hack:h14,Source\ Code\ Pro:h15,Menlo:h15
 elseif has("win16") || has("win32")
-    set gfn=Hack:h14,Source\ Code\ Pro:h12,Bitstream\ Vera\ Sans\ Mono:h11
+    set gfn=Consolas:h12,Source\ Code\ Pro:h12,Bitstream\ Vera\ Sans\ Mono:h11
+    set guifontwide=黑体:h12
 elseif has("gui_gtk2")
     set gfn=Hack\ 14,Source\ Code\ Pro\ 12,Bitstream\ Vera\ Sans\ Mono\ 11
 elseif has("linux")
@@ -26,6 +27,7 @@ set guioptions-=r
 set guioptions-=R
 set guioptions-=l
 set guioptions-=L
+set guioptions-=m
 
 " Colorscheme
 set background=dark

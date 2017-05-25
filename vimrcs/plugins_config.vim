@@ -93,8 +93,6 @@ let g:multi_cursor_next_key="\<C-s>"
 " => surround.vim config
 " Annotate strings with gettext http://amix.dk/blog/post/19678
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-vmap Si S(i_<esc>f)
-au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -131,7 +129,7 @@ let g:lightline = {
 let g:goyo_width=100
 let g:goyo_margin_top = 2
 let g:goyo_margin_bottom = 2
-nnoremap <silent> <leader>z :Goyo<cr>
+" nnoremap <silent> <leader>z :Goyo<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -160,7 +158,7 @@ func! SyntasticCheckCoffeescript()
     execute "SyntasticCheck"
     execute "Errors"
 endfunc
-nnoremap <silent> <leader>c :call SyntasticCheckCoffeescript()<cr>
+" nnoremap <silent> <leader>c :call SyntasticCheckCoffeescript()<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
