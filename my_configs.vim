@@ -12,12 +12,14 @@ map <silent> <leader>j :CtrlPMixed<CR>
 
 set clipboard=unnamed
 
-set columns=140
-set lines=56
-winpos 450 0
+if has("gui_running")
+  set columns=140
+  set lines=56
+  winpos 450 0
+endif
 
 vnoremap ig :<C-U>silent! normal! ggVG<CR>
-omap af :normal Vig<CR> 
+omap af :normal Vig<CR>
 
 let @o="mqYP`q"
 nnoremap , @o
@@ -30,3 +32,4 @@ nmap <leader>; <Plug>CommentaryLine
 autocmd BufEnter * silent! lcd %:p:h
 autocmd FileType apache setlocal commentstring=#\ %s
 
+set timeoutlen=1000 ttimeoutlen=100

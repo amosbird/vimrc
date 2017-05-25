@@ -170,4 +170,4 @@ nnoremap <silent> <leader>d :GitGutterToggle<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Easy motion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap f <Plug>(easymotion-bd-w)
+map f <Plug>(easymotion-bd-w)
