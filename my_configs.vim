@@ -10,6 +10,9 @@ map <silent> <leader>bb :CtrlPBuffer<CR>
 map <silent> <leader>f :CtrlPMRU<CR>
 map <silent> <leader>j :CtrlPMixed<CR>
 
+inoremap        <C-K> <C-O>D
+
+
 set clipboard=unnamed
 
 if has("gui_running")
@@ -33,3 +36,6 @@ autocmd BufEnter * silent! lcd %:p:h
 autocmd FileType apache setlocal commentstring=#\ %s
 
 set timeoutlen=1000 ttimeoutlen=100
+
+noremap ,c ZZ
+noremap ,k ZQ

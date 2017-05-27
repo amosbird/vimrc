@@ -49,6 +49,7 @@ vim-flake8 https://github.com/nvie/vim-flake8
 vim-pug https://github.com/digitaltoad/vim-pug
 lightline.vim https://github.com/itchyny/lightline.vim
 vim-easymotion https://github.com/easymotion/vim-easymotion
+vim-rsi https://github.com/tpope/vim-rsi
 """.strip()
 
 GITHUB_ZIP = '%s/archive/master.zip'
