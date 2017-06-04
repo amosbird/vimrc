@@ -37,6 +37,7 @@ autocmd FileType apache setlocal commentstring=#\ %s
 
 set timeoutlen=1000 ttimeoutlen=100
 
+noremap ,, ZZ
 noremap ,c ZZ
 noremap ,k ZQ
 nnoremap <silent> <Leader>sc :nohlsearch<CR><C-L>
@@ -45,3 +46,12 @@ map <silent> <C-h> :wincmd h<CR>
 map <silent> <C-j> :wincmd j<CR>
 map <silent> <C-k> :wincmd k<CR>
 map <silent> <C-l> :wincmd l<CR>
+
+map <silent> <Leader>gs :Gstatus<CR>
+map <silent> <Leader>gb :Gblame<CR>
+map <silent> <Leader>gf :Gfetch<CR>
+map <silent> <Leader>gF :Gpull<CR>
+map <silent> <Leader>gp :Gpush<CR>
+
+
+
