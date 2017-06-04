@@ -30,7 +30,8 @@ nnoremap , @o
 noremap - $
 xmap s <Plug>VSurround
 xnoremap S s
-nmap <leader>; <Plug>CommentaryLine
+map <leader>; <Plug>Commentary
+nmap <leader>;; <Plug>CommentaryLine
 
 autocmd BufEnter * silent! lcd %:p:h
 autocmd FileType apache setlocal commentstring=#\ %s

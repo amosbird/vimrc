@@ -171,5 +171,5 @@ map f <Plug>(easymotion-bd-w)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:swoopUseDefaultKeyMap = 0
 
-nmap <c-s> :call Swoop()<CR>
-vmap <c-s> :call SwoopSelection()<CR>
+" nmap <c-s> :call Swoop()<CR>
+" vmap <c-s> :call SwoopSelection()<CR>
