@@ -1,6 +1,6 @@
 set guifont=Consolas:h10
 set guifontwide=黑体:h10
-
+set guicursor+=a:blinkon0
 
 map <C-Tab> gt
 map <C-S-Tab> gT
@@ -16,7 +16,7 @@ inoremap        <C-K> <C-O>D
 set clipboard=unnamed
 
 if has("gui_running")
-  set columns=140
+  set columns=116
   set lines=56
   winpos 450 0
 endif
@@ -39,3 +39,5 @@ set timeoutlen=1000 ttimeoutlen=100
 
 noremap ,c ZZ
 noremap ,k ZQ
+nnoremap <silent> <Leader>sc :nohlsearch<CR><C-L>
+
