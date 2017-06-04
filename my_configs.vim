@@ -54,7 +54,8 @@ map <silent> <Leader>gf :Gfetch<CR>
 map <silent> <Leader>gF :Gpull<CR>
 map <silent> <Leader>gp :Gpush<CR>
 
-unmap <A-j>
-unmap <A-k>
+silent! unmap <A-j>
+silent! unmap <A-k>
 
-
+cnoremap <C-k> <c-f>C<c-c>
+cnoremap <A-k> <c-f>C<c-c>
