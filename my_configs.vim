@@ -41,3 +41,7 @@ noremap ,c ZZ
 noremap ,k ZQ
 nnoremap <silent> <Leader>sc :nohlsearch<CR><C-L>
 
+map <silent> <C-h> :wincmd h<CR>
+map <silent> <C-j> :wincmd j<CR>
+map <silent> <C-k> :wincmd k<CR>
+map <silent> <C-l> :wincmd l<CR>
