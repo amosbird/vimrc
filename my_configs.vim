@@ -59,3 +59,6 @@ silent! unmap <A-k>
 
 cnoremap <C-k> <c-f>C<c-c>
 cnoremap <A-k> <c-f>C<c-c>
+
+map  <silent>  <S-Insert>  "+p
+imap <silent>  <S-Insert>  <Esc>"+pa
