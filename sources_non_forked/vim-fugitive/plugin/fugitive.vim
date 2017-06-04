@@ -2570,6 +2570,10 @@ function! s:BufReadIndex() abort
     nnoremap <buffer> <silent> <C-P> :<C-U>execute <SID>StagePrevious(v:count1)<CR>
     nnoremap <buffer> <silent> - :<C-U>silent execute <SID>StageToggle(line('.'),line('.')+v:count1-1)<CR>
     xnoremap <buffer> <silent> - :<C-U>silent execute <SID>StageToggle(line("'<"),line("'>"))<CR>
+    nnoremap <buffer> <silent> s :<C-U>silent execute <SID>StageToggle(line('.'),line('.')+v:count1-1)<CR>
+    xnoremap <buffer> <silent> s :<C-U>silent execute <SID>StageToggle(line("'<"),line("'>"))<CR>
+    nnoremap <buffer> <silent> x :<C-U>silent execute <SID>StageToggle(line('.'),line('.')+v:count1-1)<CR>
+    xnoremap <buffer> <silent> x :<C-U>silent execute <SID>StageToggle(line("'<"),line("'>"))<CR>
     nnoremap <buffer> <silent> a :<C-U>let b:fugitive_display_format += 1<Bar>exe <SID>BufReadIndex()<CR>
     nnoremap <buffer> <silent> i :<C-U>let b:fugitive_display_format -= 1<Bar>exe <SID>BufReadIndex()<CR>
     nnoremap <buffer> <silent> C :<C-U>Gcommit<CR>
@@ -2802,9 +2806,9 @@ function! s:GFInit(...) abort
   cnoremap <buffer> <expr> <Plug><cfile> fugitive#cfile()
   if !exists('g:fugitive_no_maps') && empty(mapcheck('gf', 'n'))
     nmap <buffer> <silent> gf          <SID>:find <Plug><cfile><CR>
-    nmap <buffer> <silent> <C-W>f     <SID>:sfind <Plug><cfile><CR>
-    nmap <buffer> <silent> <C-W><C-F> <SID>:sfind <Plug><cfile><CR>
-    nmap <buffer> <silent> <C-W>gf  <SID>:tabfind <Plug><cfile><CR>
+    " nmap <buffer> <silent> <C-W>f     <SID>:sfind <Plug><cfile><CR>
+    " nmap <buffer> <silent> <C-W><C-F> <SID>:sfind <Plug><cfile><CR>
+    " nmap <buffer> <silent> <C-W>gf  <SID>:tabfind <Plug><cfile><CR>
   endif
 endfunction
 
