@@ -36,7 +36,6 @@ vim-snipmate https://github.com/garbas/vim-snipmate
 vim-snippets https://github.com/honza/vim-snippets
 vim-surround https://github.com/tpope/vim-surround
 vim-expand-region https://github.com/terryma/vim-expand-region
-vim-multiple-cursors https://github.com/terryma/vim-multiple-cursors
 vim-fugitive https://github.com/tpope/vim-fugitive
 vim-zenroom2 https://github.com/amix/vim-zenroom2
 vim-repeat https://github.com/tpope/vim-repeat
@@ -49,6 +48,7 @@ vim-pug https://github.com/digitaltoad/vim-pug
 lightline.vim https://github.com/itchyny/lightline.vim
 vim-easymotion https://github.com/easymotion/vim-easymotion
 vim-rsi https://github.com/tpope/vim-rsi
+vim-swoop https://github.com/pelodelfuego/vim-swoop
 """.strip()
 
 GITHUB_ZIP = '%s/archive/master.zip'

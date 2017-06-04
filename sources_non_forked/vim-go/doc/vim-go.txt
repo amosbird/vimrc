@@ -607,7 +607,7 @@ CTRL-t
 
     Changes the build tags for various commands. If you have any file that
     uses a custom build tag, such as `//+build integration` , this command can
-    be used to pass it to all tools that accepts tags, such as guru, gorenate,
+    be used to pass it to all tools that accepts tags, such as guru, gorename,
     etc..
 
     The build tags is cleared (unset) if `""` is given. If no arguments is
@@ -1107,10 +1107,23 @@ used >
 <
                                                           *'g:go_fmt_options'*
 
-Use this option to add additional options to the |'g:go_fmt_command'|. Default
-is empty. >
-
+Use this option to add additional options to the |'g:go_fmt_command'|. It's
+value type can be either a string or a dictionary. This is due backwards
+compatibility. The string version will be removed in the future so please use
+the dictionary version. Default is empty. 
+>
   let g:go_fmt_options = ''
+
+  or 
+
+  let g:go_fmt_options = {}
+<
+The dictionary version allows you to define options for multiple binaries:
+>
+  let g:go_fmt_options = {
+    \ 'gofmt': '-s',
+    \ 'goimports': '-local mycompany.com',
+    \ }
 <
                                                     *'g:go_fmt_fail_silently'*
 
@@ -1382,9 +1395,10 @@ explicitly overrides this behavior. For standard Vim behavior, set it to 10.
 <
                                                             *'g:go_list_type'*
 
-Specifies the type of list to use. The default value (empty) will use the
-appropriate kind of list for the command that was called. Supported values are
-"", "quickfix", and "locationlist". >
+Specifies the type of list to use for command outputs (such as errors from
+builds, results from static analysis commands, etc...). The default value
+(empty) will use the appropriate kind of list for the command that was called.
+Supported values are "", "quickfix", and "locationlist". >
 
   let g:go_list_type = ""
 <

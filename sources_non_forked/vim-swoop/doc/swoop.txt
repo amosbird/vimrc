@@ -1,0 +1,248 @@
+*swoop.txt*     Grep and replace easily in multiple files being context aware
+
+Author  : pelodelfuego <clement.crepy@gmail.com>
+Version : 1.1.6
+
+CONTENTS
+
+        Introduction                            |swoop-introduction|
+        Usage                                   |swoop-usage|
+            Single buffer mode                      |swoop-usage-single-buffer-mode|
+            Multi buffer mode                       |swoop-usage-multi-buffer-mode|
+        Interaction                             |swoop-interaction|
+            Key Mapping                             |swoop-interaction-keymap|
+            Function                                |swoop-interaction-function|
+            Command                                 |swoop-interaction-command|
+        Variable                                |swoop-variable|
+            Behaviour                               |swoop-variable-behaviour|
+            Visual                                  |swoop-variable-visual|
+        Tips                                    |swoop-tips|
+
+
+==============================================================================
+INTRODUCTION                                        *swoop-introduction*
+
+        Vim swoop is directly inspired from helm-swoop we can find as emacs' plugin.
+        It allows you to find and replace occurences in many buffers being aware of the context.
+
+        You can edit the swoopBuffer and the changes you applied will be save for all corresponding files by saving the buffer
+
+        Especially useful to refactor a name in multiple files and keep control on it...
+
+
+==============================================================================
+USAGE						        *swoop-usage*
+
+        When you start vim-swoop (multi or single buffer mode) you get 2 windows.
+
+        First one contain context, the other is the swoop buffer. As you move the cursor to a match, the display windows will show the context.
+
+        From the swoop buffer, you can:
+
+            - Interactivly edit your search
+
+            - Navigate in results (and context) by moving the cursor
+
+            - Edit and save swoop buffer.
+                    The changes will be repercuted on all files by saving the swoop buffer
+
+            - Select current result.
+
+            - Exit Swoop and go to the location of current match.
+
+            - Quit Swoop.
+                    Exit Swoop will abort modifications and bring you back to the initial buffer and position.*
+
+            - Toggle single and multi buffer mode
+
+
+------------------------------------------------------------------------------
+SINGLE BUFFER MODE                                  *swoop-usage-single-buffer-mode*
+
+        Start in insert mode, first line contains the search pattern.
+        As you type the pattern, results will interactivly be displayed bellow.
+
+
+------------------------------------------------------------------------------
+MULTIPLE BUFFER MODE                                *swoop-usage-multi-buffer-mode*
+
+        Start in insert mode, first line contains the buffer pattern, no pattern means all buffers.
+        Buffer will be displayed interactivly bellow
+
+        Second line contains the search pattern just like in single buffer mode
+
+
+==============================================================================
+INTERACTION                                         *swoop-interaction*
+
+
+------------------------------------------------------------------------------
+KEYMAP                                              *swoop-interaction-keymap*
+
+        Default mapping to use vim-swoop are:
+
+        Swoop current buffer
+            nmap <Leader>l :call Swoop()<CR>
+            vmap <Leader>l :call SwoopSelection()<CR>
+
+
+        Swoop multi buffers
+            nmap <Leader>ml :call SwoopMulti()<CR>
+            vmap <Leader>ml :call SwoopMultiSelection()<CR>
+
+        NB: if you are in visual mode, you will land in normal mode
+
+        You can disabledefault mapping by:
+            let g:swoopUseDefaultKeyMap = 0
+
+
+------------------------------------------------------------------------------
+FUNCTION                                            *swoop-interaction-function*
+
+        Those 2 action are also exposed by the following function:
+
+        - Current buffer function
+            :call SwoopPattern(pattern)
+
+
+        - Multi buffer function
+            - For all buffer
+                :call SwoopMultiPattern(searchPattern)
+
+            - For specific buffer
+                :call SwoopMultiPattern(searchPattern, bufPattern)
+
+
+------------------------------------------------------------------------------
+COMMAND                                             *swoop-interaction-command*
+
+        A third way to acces Swoop is by a direct command:
+
+        - Single buffer mode
+            :Swoop <pattern>
+
+        - All buffer mode
+            :Swoop! <pattern>
+
+
+==============================================================================
+VARIABLE                                            *swoop-variable*
+
+
+------------------------------------------------------------------------------
+BEHAVIOR                                            *swoop-variable-behaviour*
+
+        Set search case insensitive
+            By default, smartcase is set, you can go to case insensitive search by:
+                let g:swoopIgnoreCase = 1
+
+
+        Disable quick regex mode
+            By default, typing <Space>` in the search pattern is replaced by `.*`. And to type an actual space, you will need to escape it  <Space>.
+                You can get classic mode by:
+                    let g:swoopPatternSpaceInsertsWildcard = 0
+
+
+        Disable auto insert mode for normal mode
+            By default, you will start in insert mode, you can disable it by:
+                let g:swoopAutoInserMode = 0
+
+
+------------------------------------------------------------------------------
+VISUAL                                              *swoop-variable-visual*
+
+        Lazy Filetype Load
+            By default, filetype are lazy loaded when itering over multiple.
+                let g:swoopLazyLoadFileType = 0
+
+
+        Edit default HightLight
+            If default highlight is not relevant with your colorscheme, you can edit it by editing g:swoopHighlight variable.
+                let g:swoopHighlight = ["hi! link SwoopBufferLineHi Warning", "hi! link SwoopPatternHi Error"]
+
+
+        Change default layout
+            By default, layout will be horizontal, you can set it vertical by:
+                let g:swoopWindowsVerticalLayout = 1
+
+
+        Default SwoopWindowSize
+            You can force default size for the swoop window with:
+                let g:defaultWinSwoopWidth = 12
+                let g:defaultWinSwoopHeight = 15
+
+
+
+==============================================================================
+TIPS                                                *swoop-tips*
+
+        Toggle mode
+            You can toggle single and multi buffer mode, your Pattern will stay the same.
+            Calling again a mode while your already in will reset the search pattern.
+
+
+        Search in swoop buffer
+            Since the context display depends of the cursor movement, you can lauch a search inside the search buffer.
+
+
+        Use VisualMode in the swoop buffer
+            When you use visual mode in the swoopBuffer, the context will freeze if you select more than 2 lines.
+            But it is really usefull on refactoring session: you can keep only the lines you want to refactor and execute global replace.
+
+
+        Use last search
+            When you start swoop (either the mode) and don't enter any pattern, search result will be your last search.
+
+
+==============================================================================
+CREDITS							                    *swoop-credits*
+
+vim-swoop is a pure vimL plugin
+
+- Plugin: https://github.com/pelodelfuego/vim-swoop
+- Author: pelodelfuego (https://github.com/pelodelfuego)
+
+
+Special thanks to Shingo Fukuyama for his amazing idea which has juste been ported to vim.
+
+Big thanks also to contributors (github):
+
+    - Anekos
+    - Davidmh
+    - All persons who add issues =)
+
+
+==============================================================================
+CHANGELOG						                    *asterisk-changelog*
+
+1.1.6	2016-07-04
+            Add vim help
+            Fix :x save
+            Update Readme
+
+1.1.5	2016-04-01
+            Fix cpo restore
+            Update Readme
+            Fix form david Kotchan
+
+1.1.3	2015-02-20
+            Auto save consistent way
+
+1.1.0	2015-01-29
+            Option for case sentitivity
+            Possibility to type actual space for smart search
+            Refactor
+
+1.0.5	2015-01-19
+            Enchanced Customisation
+            Exposed Command
+            Exposed Function
+            Lazy Filetype Load
+            Swoop Current visual Selection
+
+1.0.0   2015-01-07
+            Bring interactivity to Swoop Mecanism. Much more intutive and faster workflow.
+
+0.9     2014-12-14
+            Initial upload
+

@@ -84,12 +84,6 @@ map <leader>nf :NERDTreeFind<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-multiple-cursors
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:multi_cursor_next_key="\<C-s>"
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => surround.vim config
 " Annotate strings with gettext http://amix.dk/blog/post/19678
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -171,3 +165,11 @@ nnoremap <silent> <leader>d :GitGutterToggle<cr>
 " => Easy motion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map f <Plug>(easymotion-bd-w)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vim Swoop
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:swoopUseDefaultKeyMap = 0
+
+nmap <c-s> :call Swoop()<CR>
+vmap <c-s> :call SwoopSelection()<CR>
