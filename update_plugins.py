@@ -36,7 +36,6 @@ vim-snipmate https://github.com/garbas/vim-snipmate
 vim-snippets https://github.com/honza/vim-snippets
 vim-surround https://github.com/tpope/vim-surround
 vim-expand-region https://github.com/terryma/vim-expand-region
-vim-fugitive https://github.com/tpope/vim-fugitive
 vim-zenroom2 https://github.com/amix/vim-zenroom2
 vim-repeat https://github.com/tpope/vim-repeat
 vim-commentary https://github.com/tpope/vim-commentary
