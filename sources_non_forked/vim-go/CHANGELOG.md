@@ -1,10 +1,40 @@
 ## unplanned
 
+IMPROVEMENTS
+
+* Files created with `_test.go` extension have a new template with a ready to go test function. The template can be changed with the  `g:go_template_test_file` setting. [gh-1318]
+* Improve performance for highly used operations by caching `go env` calls [gh-1320]
+* `:GoCoverage` can accept arguments now. i.e: `:GoCoverage -run TestFoo` [gh-1326]
+
+BUG FIXES:
+
+* Fix obtaining package's import path for the current directory. This fixes some issues we had if the user was using multiple GOPATH's [gh-1321]
+* Fix documentation for vim-go & syntastic integration for errcheck using [gh-1323]
+* Fix showing an output if a test has finished when `:GoTest` is called [gh-1327]
+
 ## 1.13 - (June 6, 2017)
 
 FEATURES:
 
-* New `:GoKeyify` command that turns unkeyed struct literals into keyed struct literals. [gh-1258]
+* New `:GoKeyify` command that turns unkeyed struct literals into keyed struct literals. [gh-1258]. i.e:
+
+```
+Example{"foo", "bar", "qux"}
+```
+
+will be converted to:
+
+```
+Example{
+  foo: "foo",
+  bar: "bar",
+  qux: "qux",
+}
+```
+
+Checkout the demo here: https://twitter.com/fatih/status/860410299714764802
+
+
 * New `g:go_addtags_transform` setting to change the transform rule (snakecase, camelcase, etc..) for `:GoAddTags` command [gh-1275]
 * New snippet shortcut assigned to `ife` that expands to `if err := foo(); err != nil { ... }` [gh-1268]
 

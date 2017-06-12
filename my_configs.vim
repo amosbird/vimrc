@@ -6,7 +6,7 @@ map <C-Tab> gt
 map <C-S-Tab> gT
 map <silent> <C-w> :bd<CR>
 
-map <silent> <leader>bb :CtrlPBuffer<CR>
+map <silent> <leader>bb :Denite buffer<CR>
 map <silent> <leader>f :CtrlPMRU<CR>
 map <silent> <leader>j :CtrlPMixed<CR>
 
@@ -60,6 +60,19 @@ silent! unmap <A-k>
 cnoremap <C-k> <c-f>C<c-c>
 cnoremap <A-k> <c-f>C<c-c>
 
+" Change mappings.
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-j>',
+      \ '<denite:move_to_next_line>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-k>',
+      \ '<denite:move_to_previous_line>',
+      \ 'noremap'
+      \)
 
 let &t_ti .= "\<Esc>[?2004h"
 let &t_te .= "\<Esc>[?2004l"
@@ -77,3 +90,5 @@ imap <expr> <f28> XTermPasteBegin("")
 vmap <expr> <f28> XTermPasteBegin("c")
 cmap <f28> <nop>
 cmap <f29> <nop>
+
+set noimdisable

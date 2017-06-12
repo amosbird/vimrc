@@ -19,6 +19,7 @@ PLUGINS = """
 ack.vim https://github.com/mileszs/ack.vim
 bufexplorer https://github.com/corntrace/bufexplorer
 ctrlp.vim https://github.com/ctrlpvim/ctrlp.vim
+denite.nvim https://github.com/Shougo/denite.nvim
 mayansmoke https://github.com/vim-scripts/mayansmoke
 nerdtree https://github.com/scrooloose/nerdtree
 nginx-vim-syntax https://github.com/evanmiller/nginx-vim-syntax
@@ -47,7 +48,6 @@ vim-pug https://github.com/digitaltoad/vim-pug
 lightline.vim https://github.com/itchyny/lightline.vim
 vim-easymotion https://github.com/easymotion/vim-easymotion
 vim-rsi https://github.com/tpope/vim-rsi
-vim-swoop https://github.com/pelodelfuego/vim-swoop
 """.strip()
 
 GITHUB_ZIP = '%s/archive/master.zip'
