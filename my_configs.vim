@@ -6,11 +6,12 @@ map <C-Tab> gt
 map <C-S-Tab> gT
 map <silent> <C-w> :bd<CR>
 
-map <silent> <leader>bb :Denite buffer<CR>
-map <silent> <leader>f :CtrlPMRU<CR>
+map <silent> <leader>b :Denite buffer -winheight=`40*winheight(0)/100`<CR>
+map <silent> <leader>f :Denite file_old -winheight=`40*winheight(0)/100`<CR>
+map <silent> <C-s> :Denite line -auto-highlight -winheight=`40*winheight(0)/100`<CR>
 map <silent> <leader>j :CtrlPMixed<CR>
 
-inoremap        <C-K> <C-O>D
+inoremap <C-K> <C-O>D
 
 
 set clipboard=unnamed
@@ -36,7 +37,7 @@ nmap <leader>;; <Plug>CommentaryLine
 autocmd BufEnter * silent! lcd %:p:h
 autocmd FileType apache setlocal commentstring=#\ %s
 
-set timeoutlen=1000 ttimeoutlen=100
+set timeoutlen=1000 ttimeoutlen=10
 
 noremap ,, ZZ
 noremap ,c ZZ
@@ -59,6 +60,7 @@ silent! unmap <A-k>
 
 cnoremap <C-k> <c-f>C<c-c>
 cnoremap <A-k> <c-f>C<c-c>
+cnoremap <esc>k <c-f>C<c-c>
 
 " Change mappings.
 call denite#custom#map(
@@ -71,6 +73,30 @@ call denite#custom#map(
       \ 'insert',
       \ '<C-k>',
       \ '<denite:move_to_previous_line>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-g>',
+      \ '<denite:quit>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-v>',
+      \ '<denite:scroll_window_downwards>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<esc>v',
+      \ '<denite:scroll_window_upwards>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
+      \ '<C-i>',
+      \ '<denite:do_action:preview>',
       \ 'noremap'
       \)
 
@@ -92,3 +118,10 @@ cmap <f28> <nop>
 cmap <f29> <nop>
 
 set noimdisable
+
+call textobj#user#plugin('anyblock', {
+    \ '-' : {
+    \      'select-a' : 'aj', '*select-a-function*' : 'textobj#anyblock#select_a',
+    \      'select-i' : 'ij', '*select-i-function*' : 'textobj#anyblock#select_i',
+    \   },
+    \ })

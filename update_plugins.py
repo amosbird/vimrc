@@ -14,10 +14,9 @@ import requests
 from os import path
 
 
-#--- Globals ----------------------------------------------
+# --- Globals ----------------------------------------------
 PLUGINS = """
 ack.vim https://github.com/mileszs/ack.vim
-bufexplorer https://github.com/corntrace/bufexplorer
 ctrlp.vim https://github.com/ctrlpvim/ctrlp.vim
 denite.nvim https://github.com/Shougo/denite.nvim
 mayansmoke https://github.com/vim-scripts/mayansmoke
@@ -29,6 +28,8 @@ vim-addon-mw-utils https://github.com/MarcWeber/vim-addon-mw-utils
 vim-bundle-mako https://github.com/sophacles/vim-bundle-mako
 vim-coffee-script https://github.com/kchmck/vim-coffee-script
 vim-colors-solarized https://github.com/altercation/vim-colors-solarized
+vim-textobj-user https://github.com/kana/vim-textobj-user
+vim-textobj-anyblock https://github.com/rhysd/vim-textobj-anyblock
 vim-indent-object https://github.com/michaeljsmith/vim-indent-object
 vim-less https://github.com/groenewege/vim-less
 vim-markdown https://github.com/tpope/vim-markdown
@@ -66,7 +67,8 @@ def download_extract_replace(plugin_name, zip_path, temp_dir, source_dir):
     zip_f.extractall(temp_dir)
 
     plugin_temp_path = path.join(temp_dir,
-                                 path.join(temp_dir, '%s-master' % plugin_name))
+                                 path.join(temp_dir,
+                                           '%s-master' % plugin_name))
 
     # Remove the current plugin and replace it with the extracted
     plugin_dest_path = path.join(source_dir, plugin_name)
