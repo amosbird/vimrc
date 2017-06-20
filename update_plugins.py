@@ -20,7 +20,6 @@ ack.vim https://github.com/mileszs/ack.vim
 ctrlp.vim https://github.com/ctrlpvim/ctrlp.vim
 denite.nvim https://github.com/Shougo/denite.nvim
 mayansmoke https://github.com/vim-scripts/mayansmoke
-nerdtree https://github.com/scrooloose/nerdtree
 nginx-vim-syntax https://github.com/evanmiller/nginx-vim-syntax
 snipmate-snippets https://github.com/scrooloose/snipmate-snippets
 tlib https://github.com/vim-scripts/tlib
