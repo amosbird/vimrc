@@ -95,6 +95,12 @@ call denite#custom#map(
       \)
 call denite#custom#map(
       \ 'insert',
+      \ '<A-v>',
+      \ '<denite:scroll_window_upwards>',
+      \ 'noremap'
+      \)
+call denite#custom#map(
+      \ 'insert',
       \ '<C-i>',
       \ '<denite:do_action:preview>',
       \ 'noremap'
@@ -117,7 +123,8 @@ vmap <expr> <f28> XTermPasteBegin("c")
 cmap <f28> <nop>
 cmap <f29> <nop>
 
-set noimdisable
+autocmd! InsertLeave * set imdisable|set iminsert=0
+autocmd! InsertEnter * set noimdisable|set iminsert=2
 
 call textobj#user#plugin('anyblock', {
     \ '-' : {
