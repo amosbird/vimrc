@@ -6,7 +6,8 @@ map <C-Tab> gt
 map <C-S-Tab> gT
 map <silent> <C-w> :bd<CR>
 
-map <silent> <leader>b :Denite buffer -winheight=`40*winheight(0)/100`<CR>
+map <silent> <leader>bs :e ~/buffer<CR>
+map <silent> <leader>bb :Denite buffer -winheight=`40*winheight(0)/100`<CR>
 map <silent> <leader>f :Denite file_old -winheight=`40*winheight(0)/100`<CR>
 map <silent> <C-s> :Denite line -auto-highlight -winheight=`40*winheight(0)/100`<CR>
 map <silent> <leader>j :CtrlPMixed<CR>
@@ -95,7 +96,7 @@ call denite#custom#map(
       \)
 call denite#custom#map(
       \ 'insert',
-      \ '<A-v>',
+      \ 'ö',
       \ '<denite:scroll_window_upwards>',
       \ 'noremap'
       \)
@@ -216,3 +217,14 @@ endfunction
 function! s:str2bytes(str)
   return map(range(len(a:str)), 'char2nr(a:str[v:val])')
 endfunction
+
+function! s:getchar() abort
+  redraw | echo 'Press any key: '
+  let c = getchar()
+  while c ==# "\<CursorHold>"
+    redraw | echo 'Press any key: '
+    let c = getchar()
+  endwhile
+  redraw | echomsg printf('Raw: "%s" | Char: "%s"', c, nr2char(c))
+endfunction
+command! GetChar call s:getchar()
