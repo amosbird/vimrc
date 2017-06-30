@@ -8,10 +8,12 @@ import weakref
 from itertools import filterfalse, groupby, takewhile
 
 from denite.util import (
-    clear_cmdline, echo, error, regex_convert_py_vim, regex_convert_str_vim)
+    clear_cmdline, echo, error, regex_convert_py_vim,
+    regex_convert_str_vim, clearmatch)
 from .action import DEFAULT_ACTION_KEYMAP
 from .prompt import DenitePrompt
 from .. import denite
+from copy import copy
 from ..prompt.prompt import STATUS_ACCEPT, STATUS_INTERRUPT
 
 
@@ -146,8 +148,9 @@ class Default(object):
         self._scroll = int(self._context['scroll'])
         if self._scroll == 0:
             self._scroll = round(self._winheight / 2)
-        self._guicursor = self._vim.options['guicursor']
-        self._vim.options['guicursor'] = 'n-v-c:None'
+        if self._context['cursor_shape']:
+            self._guicursor = self._vim.options['guicursor']
+            self._vim.options['guicursor'] = 'n-v-c:None'
 
         if self._winid > 0 and self._vim.call(
                 'win_gotoid', self._winid):
@@ -297,6 +300,13 @@ class Default(object):
                     for x in matchers if self._denite.get_filter(x)
                 ))
                 pattern = next(patterns, '')
+
+        if self._context['sorters']:
+            for sorter in self._context['sorters'].split(','):
+                ctx = copy(self._context)
+                ctx['candidates'] = self._candidates
+                self._candidates = self._denite.get_filter(sorter).filter(ctx)
+
         prev_matched_pattern = self._matched_pattern
         self._matched_pattern = pattern
         self._candidates_len = len(self._candidates)
@@ -468,14 +478,15 @@ class Default(object):
 
     def cleanup(self):
         self._vim.command('pclose!')
-        self._vim.call('clearmatches')
+        clearmatch(self._vim)
         # Redraw to clear prompt
         self._vim.command('redraw | echo ""')
         self._vim.command('highlight! link CursorLine CursorLine')
         if self._vim.call('exists', '#ColorScheme'):
             self._vim.command('silent doautocmd ColorScheme')
-        self._vim.command('set guicursor&')
-        self._vim.options['guicursor'] = self._guicursor
+        if self._context['cursor_shape']:
+            self._vim.command('set guicursor&')
+            self._vim.options['guicursor'] = self._guicursor
 
     def quit_buffer(self):
         self.cleanup()

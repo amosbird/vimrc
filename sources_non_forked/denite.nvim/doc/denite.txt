@@ -919,6 +919,11 @@ OPTIONS							*denite-options*
 		Note: 0 is the first candidate.
 		Default: ''
 
+						*denite-options-cursor-shape*
+-cursor-shape
+		Enable 'guicursor' support.
+		Default: v:true if has("gui_running")
+
 						*denite-options-cursor-wrap*
 -cursor-wrap
 		If you move when the cursor reaches the top or bottom edge,
@@ -1020,6 +1025,11 @@ OPTIONS							*denite-options*
 -short-source-names
 		Use short source names if multiple sources.
 		Default: false
+
+						*denite-options-sorters*
+-sorters
+		Specify a list of sorter names.  They are source independent.
+		Default: ""
 
 						*denite-options-statusline*
 -statusline
