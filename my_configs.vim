@@ -9,7 +9,7 @@ map <silent> <C-w> :bd<CR>
 map <silent> <leader>bs :e ~/buffer<CR>
 map <silent> <leader>bb :Denite buffer -winheight=`40*winheight(0)/100`<CR>
 map <silent> <leader>f :Denite file_old -winheight=`40*winheight(0)/100`<CR>
-map <silent> <C-s> :Denite line -auto-highlight -winheight=`40*winheight(0)/100`<CR>
+map <silent> <C-s> :Denite line -cursor-pos=`line('.')-1` -auto-highlight -winheight=`40*winheight(0)/100`<CR>
 map <silent> <leader>j :CtrlPMixed<CR>
 
 inoremap <C-K> <C-O>D

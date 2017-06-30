@@ -164,7 +164,9 @@ nnoremap <silent> <leader>d :GitGutterToggle<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Easy motion
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:EasyMotion_keys = 'sdghklwertyuiopxcvbnmfj'
 map f <Plug>(easymotion-bd-w)
+map t <Plug>(easymotion-bd-e)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim Swoop
