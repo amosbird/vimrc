@@ -142,7 +142,7 @@ class Default(object):
 
         self._prev_wininfo = self._get_wininfo()
         self._winheight = int(self._context['winheight'])
-        self._prev_winid = self._vim.call('win_getid')
+        self._prev_winid = int(self._context['prev_winid'])
         self._winrestcmd = self._vim.call('winrestcmd')
         self._winsaveview = self._vim.call('winsaveview')
         self._scroll = int(self._context['scroll'])
@@ -596,11 +596,9 @@ class Default(object):
         return self.do_action(action)
 
     def move_to_pos(self, pos):
-        current_pos = self._win_cursor + self._cursor - 1
-        if current_pos < pos:
-            self.scroll_down(pos - current_pos)
-        else:
-            self.scroll_up(current_pos - pos)
+        self._cursor = int(pos / self._winheight) * self._winheight
+        self._win_cursor = (pos % self._winheight) + 1
+        self.update_cursor()
 
     def move_to_next_line(self):
         if self._win_cursor + self._cursor < self._candidates_len:
